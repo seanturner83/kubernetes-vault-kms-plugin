@@ -2,6 +2,9 @@ language: go
 go:
 - '1.14.x'
 
+before_install:
+  - cd vault
+
 install:
   - # skip
 

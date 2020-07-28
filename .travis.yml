@@ -11,7 +11,8 @@ install:
 script:
   - pwd
   - go get -t -v ./...
-  - CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build 
+  - CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build
+  - ls -al /home/travis/gopath/bin 
 
 deploy:
   provider: releases
@@ -22,5 +23,5 @@ deploy:
   - /home/travis/gopath/bin/server
   - /home/travis/gopath/bin/client
   on:
-    repo: seanturner83/eth-height-health
+    repo: seanturner83/kubernetes-vault-kms-plugin
     all_branches: true

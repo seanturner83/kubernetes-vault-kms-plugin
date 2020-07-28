@@ -33,10 +33,10 @@ jobs:
         pwd
 
     - name: Build
-      run: go build -v .
+      run: cd vault && go build -v .
 
     - name: Test
-      run: go test -v .
+      run: cd vault && go test -v .
     
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2

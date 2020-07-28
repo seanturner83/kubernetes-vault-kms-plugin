@@ -33,10 +33,10 @@ jobs:
         pwd
 
     - name: Build
-      run: cd vault && go build -v .
+      run: cd vault && go build -o bin -v .
 
     - name: Test
-      run: ls -al && cd vault && go test -v . && ls -al server
+      run: cd vault && go test -v . && ls -al && ls -al bin
     
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
@@ -44,4 +44,4 @@ jobs:
       # Artifact name
         name: server
       # A file, directory or wildcard pattern that describes what to upload
-        path: /home/runner/work/kubernetes-vault-kms-plugin/kubernetes-vault-kms-plugin/vault/_output/server
+        path: /home/runner/work/kubernetes-vault-kms-plugin/kubernetes-vault-kms-plugin/vault/bin/server

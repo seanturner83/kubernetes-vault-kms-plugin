@@ -30,10 +30,10 @@ jobs:
             curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
             dep ensure
         fi
-        pwd
+        mkdir -p bin
 
     - name: Build
-      run: cd vault && go build -o bin -v .
+      run: cd vault && go build -o bin/server -v .
 
     - name: Test
       run: cd vault && go test -v . && ls -al && ls -al bin

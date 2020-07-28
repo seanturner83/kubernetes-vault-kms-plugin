@@ -36,7 +36,7 @@ jobs:
       run: cd vault && go build -v .
 
     - name: Test
-      run: cd vault && go test -v . && ls -al && ls -al vault
+      run: ls -al && cd vault && go test -v . && ls -al server
     
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2

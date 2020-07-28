@@ -6,7 +6,8 @@ install:
   - # skip
 
 script:
-  - cd vault
+  - pwd
+  - cd /home/travis/gopath/src/kubernetes-vault-kms-plugin/vault
   - go get -t -v ./...
   - CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build 
 

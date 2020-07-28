@@ -46,15 +46,20 @@ jobs:
       # A file, directory or wildcard pattern that describes what to upload
         path: /home/runner/work/kubernetes-vault-kms-plugin/kubernetes-vault-kms-plugin/vault/bin/server
 
-    - name: Create a Release
+    - name: Get short SHA
+      id: slug
+      run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
+
+    - name: Create release
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        # The name of the tag. This should come from the webhook payload, `github.GITHUB_REF` when a user pushes a new tag
-        tag_name: ${{ github.sha }}
-        release_name: Release ${{ github.sha }}
+        tag_name: v${{ steps.today.outputs.date }}-${{ steps.slug.outputs.sha8 }}
+        release_name: Release v${{ steps.today.outputs.date }}-${{ steps.slug.outputs.sha8 }}
+        draft: false
+        prerelease: false
 
     - name: Upload a Release Asset
       uses: actions/upload-release-asset@v1.0.2

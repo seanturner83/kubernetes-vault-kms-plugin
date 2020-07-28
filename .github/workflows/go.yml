@@ -33,10 +33,10 @@ jobs:
         mkdir -p bin
 
     - name: Build
-      run: cd vault && go build -o bin/server -v .
+      run: cd vault && go build -o bin/server -v server/grpcServer.go
 
     - name: Test
-      run: cd vault && go test -v . && ls -al && ls -al bin
+      run: cd vault && go test -v .
     
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
